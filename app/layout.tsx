@@ -14,7 +14,7 @@ import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
   title: 'Airbnb',
-  description: 'Airbnb Clone',
+  description: 'Airbnb Clone by Dylan',
 }
 
 const font = Nunito({ 
@@ -30,6 +30,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon" />
+      </head>
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
