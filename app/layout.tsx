@@ -31,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon" />
+        {/* <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon" /> */}
       </head>
       <body className={font.className}>
         <ClientOnly>
