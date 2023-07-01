@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import prisma from "@/app/libs/prismadb";
 
-export interface ICurrentUser {
+export interface ICurrentUserParams {
   createdAt: string;
   updatedAt: string;
   emailVerified: string | null;
@@ -13,7 +13,7 @@ export interface ICurrentUser {
   email: string | null;
   hashedPassword: string | null;
   favoriteIds: string[];
-};
+}
 
 export async function getSession() {
   return await getServerSession(authOptions)
