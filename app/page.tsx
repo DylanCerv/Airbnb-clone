@@ -7,14 +7,43 @@ import getListings, {
 } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
+import { useEffect, useState } from "react";
 
 interface HomeProps {
   searchParams: IListingsParams
 };
 
-const Home = async ({ searchParams }: HomeProps) => {
-  const listings = await getListings(searchParams);
-  const currentUser = await getCurrentUser();
+const Home = ({ searchParams }: HomeProps) => {
+  // const listings = await getListings(searchParams);
+  // const currentUser = await getCurrentUser();
+
+  // if (listings.length === 0) {
+  //   return (
+  //     <ClientOnly>
+  //       <EmptyState showReset />
+  //     </ClientOnly>
+  //   );
+  // }
+
+  const [listings, setListings] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const listingsData = await getListings(searchParams);
+        setListings(listingsData);
+  
+        const currentUserData = await getCurrentUser();
+        setCurrentUser(currentUserData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [searchParams]);
+
 
   if (listings.length === 0) {
     return (
