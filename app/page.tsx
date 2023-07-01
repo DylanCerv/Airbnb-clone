@@ -5,7 +5,9 @@ import EmptyState from "@/app/components/EmptyState";
 import getListings, { 
   IListingsParams
 } from "@/app/actions/getListings";
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import getCurrentUser, {
+  ICurrentUser
+} from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
 import { useEffect, useState } from "react";
 
@@ -25,8 +27,8 @@ const Home = ({ searchParams }: HomeProps) => {
   //   );
   // }
 
-  const [listings, setListings] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [listings, setListings] = useState<IListingsParams[]>([]);
+  const [currentUser, setCurrentUser] = useState<ICurrentUser|null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
